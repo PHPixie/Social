@@ -18,11 +18,15 @@ abstract class Provider extends \PHPixie\Social\OAuth\Provider
 
     public function handleCallback($callbackUrl, $callbackData)
     {
+        if(!isset($callbackData['code'])) {
+            return null;
+        }
+
         $baseParameters = array(
             'client_id'     => $this->configData->getRequired('appId'),
             'client_secret' => $this->configData->getRequired('appSecret'),
             'redirect_uri'  => $callbackUrl,
-            'code'          => $callbackData->getRequired('code')
+            'code'          => $callbackData['code']
         );
 
         $tokenData = $this->getTokenResponse($callbackData, $baseParameters);
@@ -33,7 +37,7 @@ abstract class Provider extends \PHPixie\Social\OAuth\Provider
             'GET',
             $this->loginDataEndpoint
         );
-        
+
         $token = $this->token(
             $this->getUserId($loginData),
             $tokenData->access_token,

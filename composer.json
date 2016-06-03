@@ -1,7 +1,7 @@
 {
-    "name": "phpixie/orm",
-    "description": "ORM library for PHPixie",
-    "keywords": ["orm", "database"],
+    "name": "phpixie/social",
+    "description": "PHPixie library for social OAuth APis: facebook, twitter, google and vk",
+    "keywords": ["social", "auth", "facebook", "twitter", "google", "vk", "oauth"],
     "homepage": "http://phpixie.com",
     "type": "library",
     "license": "BSD",

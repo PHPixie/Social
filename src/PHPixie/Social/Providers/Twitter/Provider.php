@@ -22,9 +22,14 @@ class Provider extends \PHPixie\Social\OAuth\Provider
 
     public function handleCallback($callbackUrl, $callbackData)
     {
+        if(!isset($callbackData['oauth_token'])) {
+            return null;
+        }
+
         $format = $this->format();
-        $oauthToken = $callbackData->getRequired('oauth_token');
-        $oauthVerifier = $callbackData->getRequired('oauth_verifier');
+
+        $oauthToken = $callbackData['oauth_token'];
+        $oauthVerifier = $callbackData['oauth_verifier'];
 
         $tokenResponse = $this->apiCall(
             'POST',

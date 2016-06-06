@@ -38,7 +38,7 @@ abstract class Provider extends \PHPixie\Social\OAuth\Provider
             $this->loginDataEndpoint
         );
 
-        $this->normalizeLoginData($loginData, $tokenData);
+        $loginData = $this->normalizeLoginData($loginData, $tokenData);
 
         $token = $this->token(
             $this->getUserId($loginData),

@@ -25,7 +25,7 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
             'https://accounts.google.com/o/oauth2/v2/auth',
             $callbackUrl,
             array(
-                'scope'         => implode(',', $scope),
+                'scope'         => implode(' ', $scope),
                 'response_type' => 'code'
             )
         );

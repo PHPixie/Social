@@ -12,7 +12,7 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
         return 'https://graph.facebook.com/v'.$version.'/'.$endpoint;
     }
 
-    public function loginUrl($callbackUrl, $additionalPermissions = array())
+    public function loginUrl($callbackUrl, $additionalScope = array())
     {
         $scope = array_merge(
             $this->configData->get('scope', array()),

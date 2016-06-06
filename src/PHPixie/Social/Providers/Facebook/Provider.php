@@ -14,15 +14,15 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
 
     public function loginUrl($callbackUrl, $additionalPermissions = array())
     {
-        $permissions = array_merge(
-            $this->configData->get('permissions', array()),
-            $additionalPermissions
+        $scope = array_merge(
+            $this->configData->get('scope', array()),
+            $additionalScope
         );
 
         return $this->buildLoginUrl(
             'https://www.facebook.com/dialog/oauth',
             $callbackUrl,
-            array('permissions' => $permissions)
+            array('scope' => $scope)
         );
     }
 

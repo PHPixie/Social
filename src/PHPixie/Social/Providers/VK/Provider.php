@@ -39,6 +39,17 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
         );
     }
 
+    protected function normalizeLoginData($loginData, $tokenData)
+    {
+        $loginData = $loginData[0];
+
+        if(isset($tokenData->email)) {
+            $loginData->email = $tokenData->email;
+        }
+
+        return $loginData;
+    }
+
     public function api($token, $method, $endpoint, $query = array(), $data = null)
     {
         $query['version'] = $this->configData->get('apiVersion', '5.52');
@@ -60,7 +71,7 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
 
     protected function getUserId($loginData)
     {
-        return $loginData[0]->uid;
+        return $loginData->uid;
     }
 
     public function type()

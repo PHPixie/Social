@@ -15,6 +15,7 @@ class Builder
         'google'  => '\PHPixie\Social\Providers\Google\Provider',
         'twitter' => '\PHPixie\Social\Providers\Twitter\Provider',
         'vk'      => '\PHPixie\Social\Providers\VK\Provider',
+        'github'  => '\PHPixie\Social\Providers\GitHub\Provider',
     );
 
     public function __construct($configData)
@@ -47,16 +48,6 @@ class Builder
         }
 
         return $this->format;
-    }
-
-    public function oauthAccessToken($providerName, $userId, $accessToken, $expiresAt)
-    {
-        return new \PHPixie\Social\OAuth\Token\AccessToken(
-            $name,
-            $userId,
-            $accessToken,
-            $expiresAt
-        );
     }
 
     public function oauthUser($provider, $token, $loginData = null)

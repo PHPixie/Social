@@ -11,10 +11,11 @@ class Builder
     protected $providers;
 
     protected $providerClassMap = array(
-        'facebook'=> '\PHPixie\Social\Providers\Facebook\Provider',
-        'google'  => '\PHPixie\Social\Providers\Google\Provider',
-        'twitter' => '\PHPixie\Social\Providers\Twitter\Provider',
-        'vk'      => '\PHPixie\Social\Providers\VK\Provider',
+        'facebook'  => Providers\Facebook\Provider::class,
+        'google'    => Providers\Google\Provider::class,
+        'twitter'   => Providers\Twitter\Provider::class,
+        'vk'        => Providers\Vk\Provider::class,
+        'instagram' => Providers\Instagram\Provider::class
     );
 
     public function __construct($configData)

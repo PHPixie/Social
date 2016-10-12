@@ -93,8 +93,6 @@ class Provider extends \PHPixie\Social\OAuth\Provider
 
         $data['oauth_signature'] = base64_encode(hash_hmac('sha1', $signData, $signKey, true));
 
-        $header = 'OAuth ';
-
         $header = array();
         foreach($data as $key => $value) {
             $header[] = urlencode($key).'="'.urlencode($value).'"';

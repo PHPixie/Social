@@ -54,7 +54,7 @@ class Builder
     public function oauthAccessToken($providerName, $userId, $accessToken, $expiresAt)
     {
         return new \PHPixie\Social\OAuth\Token\AccessToken(
-            $name,
+            $providerName,
             $userId,
             $accessToken,
             $expiresAt

@@ -2,6 +2,14 @@
 
 namespace PHPixie\Social\Providers\GitHub;
 
+/**
+ * Class Provider
+ *
+ * @package PHPixie\Social\Providers\GitHub
+ *
+ * @from https://github.com/PHPixie/Social/pull/2
+ */
+
 class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
 {
     /**

@@ -56,10 +56,12 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
 
         $loginData = $this->normalizeLoginData($loginData, $tokenData);
 
+        $expiresIn    = $this->configData->get('expiresIn', 2592000);
+
         $token = $this->token(
             $this->getUserId($loginData),
             $tokenData->access_token,
-            3600
+            $expiresIn
         );
 
         return $this->user($token, $loginData);

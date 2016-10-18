@@ -15,7 +15,8 @@ class Builder
         'google'    => Providers\Google\Provider::class,
         'twitter'   => Providers\Twitter\Provider::class,
         'vk'        => Providers\Vk\Provider::class,
-        'instagram' => Providers\Instagram\Provider::class
+        'instagram' => Providers\Instagram\Provider::class,
+        'github'    => Providers\Github\Provider::class,
     );
 
     public function __construct($configData)

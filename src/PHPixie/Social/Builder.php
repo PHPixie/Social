@@ -51,16 +51,6 @@ class Builder
         return $this->format;
     }
 
-    public function oauthAccessToken($providerName, $userId, $accessToken, $expiresAt)
-    {
-        return new \PHPixie\Social\OAuth\OAuth2\Token(
-            $providerName,
-            $userId,
-            $accessToken,
-            $expiresAt
-        );
-    }
-
     public function oauthUser($provider, $token, $loginData = null)
     {
         return new \PHPixie\Social\OAuth\User($provider, $token, $loginData);

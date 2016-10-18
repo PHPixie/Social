@@ -53,8 +53,8 @@ class Builder
 
     public function oauthAccessToken($providerName, $userId, $accessToken, $expiresAt)
     {
-        return new \PHPixie\Social\OAuth\Token\AccessToken(
-            $name,
+        return new \PHPixie\Social\OAuth\OAuth2\Token(
+            $providerName,
             $userId,
             $accessToken,
             $expiresAt

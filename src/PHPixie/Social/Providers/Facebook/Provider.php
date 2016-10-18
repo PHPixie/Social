@@ -39,4 +39,13 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
     {
         return 'facebook';
     }
+
+    protected function buildToken($tokenData, $loginData)
+    {
+        return $this->token(
+            $loginData->id,
+            $tokenData->access_token,
+            $tokenData->expires_in
+        );
+    }
 }

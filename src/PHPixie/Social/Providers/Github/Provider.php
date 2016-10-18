@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPixie\Social\Providers\GitHub;
+namespace PHPixie\Social\Providers\Github;
 
 /**
  * Class Provider
@@ -67,41 +67,6 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
         );
     }
 
-    public function handleCallback($callbackUrl, $callbackData)
-    {
-        if(!isset($callbackData['code'])) {
-            return null;
-        }
-
-        $baseParameters = array(
-            'client_id'     => $this->configData->getRequired('appId'),
-            'client_secret' => $this->configData->getRequired('appSecret'),
-            'redirect_uri'  => $callbackUrl,
-            'code'          => $callbackData['code']
-        );
-
-        $tokenData = $this->getTokenResponse($callbackData, $baseParameters);
-        $tokenData = $this->decodeApiResponse($tokenData);
-
-        $loginData = $this->apiCall(
-            $tokenData->access_token,
-            'GET',
-            $this->loginDataEndpoint
-        );
-
-        $loginData = $this->normalizeLoginData($loginData, $tokenData);
-
-        $expiresIn    = $this->configData->get('expiresIn', 2592000);
-
-        $token = $this->token(
-            $this->getUserId($loginData),
-            $tokenData->access_token,
-            $expiresIn
-        );
-
-        return $this->user($token, $loginData);
-    }
-
     /**
      * Makes a call to the GitHub API.
      * It's overriden because GitHub needs an User-Agent header. The value of the User-Agent header is taken from the
@@ -117,7 +82,7 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
          * @url https://github.com/OAI/OpenAPI-Specification/blob/master/fixtures/v2.0/json/resources/multipleMimeTypes.json#L23
          */
         $format    = $this->configData->get('format', '+json');
-        $userAgent = $this->configData->get('userAgent', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0');
+        $userAgent = $this->configData->get('userAgent', 'PHPixie Social Component');
         $version   = $this->configData->get('version', 3);
 
         $url                   = $this->endpointUrl($endpoint);
@@ -134,7 +99,7 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
 
     protected function buildToken($tokenData, $loginData)
     {
-        $expiresIn    = $this->configData->get('expiresIn', 2592000);
+        $expiresIn    = $this->configData->get('expiresIn');
 
         return $this->token(
             $loginData->id,

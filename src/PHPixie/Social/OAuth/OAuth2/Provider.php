@@ -40,11 +40,7 @@ abstract class Provider extends \PHPixie\Social\OAuth\Provider
 
         $loginData = $this->normalizeLoginData($loginData, $tokenData);
 
-        $token = $this->token(
-            $this->getUserId($loginData),
-            $tokenData->access_token,
-            $tokenData->expires_in
-        );
+        $token = $this->buildToken($tokenData, $loginData);
 
         return $this->user($token, $loginData);
     }
@@ -74,7 +70,7 @@ abstract class Provider extends \PHPixie\Social\OAuth\Provider
         return $this->format()->jsonDecode($response);
     }
 
-    protected function token($userId, $accessToken, $expiresIn)
+    protected function token($userId, $accessToken, $expiresIn = null)
     {
         return new Token(
             $this->name,
@@ -90,5 +86,8 @@ abstract class Provider extends \PHPixie\Social\OAuth\Provider
     }
 
     abstract protected function endpointUrl($url);
+
     abstract protected function getTokenResponse($callbackData, $baseParameters);
+
+    abstract protected function buildToken($tokenData, $loginData);
 }

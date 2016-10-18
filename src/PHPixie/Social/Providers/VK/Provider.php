@@ -74,6 +74,15 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
         return $loginData->uid;
     }
 
+    protected function buildToken($tokenData, $loginData)
+    {
+        return $this->token(
+            $loginData->uid,
+            $tokenData->access_token,
+            $tokenData->expires_in
+        );
+    }
+
     public function type()
     {
         return 'vk';

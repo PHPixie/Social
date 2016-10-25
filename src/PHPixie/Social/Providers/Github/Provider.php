@@ -99,7 +99,7 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
 
     protected function buildToken($tokenData, $loginData)
     {
-        $expiresIn    = $this->configData->get('expiresIn');
+        $expiresIn    = $this->configData->get('expiresIn', 2592000);
 
         return $this->token(
             $loginData->id,

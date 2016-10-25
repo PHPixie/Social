@@ -17,6 +17,7 @@ class Builder
         'vk'        => Providers\Vk\Provider::class,
         'instagram' => Providers\Instagram\Provider::class,
         'github'    => Providers\Github\Provider::class,
+        'dropbox'   => Providers\Dropbox\Provider::class,
     );
 
     public function __construct($configData)

@@ -56,13 +56,7 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
 
         $loginData = $this->normalizeLoginData($loginData, $tokenData);
 
-        $expiresIn    = $this->configData->get('expiresIn', 2592000);
-
-        $token = $this->token(
-            $this->getUserId($loginData),
-            $tokenData->access_token,
-            $expiresIn
-        );
+        $token = $this->buildToken($tokenData, $loginData);
 
         return $this->user($token, $loginData);
     }
@@ -79,6 +73,17 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
             'https://api.instagram.com/oauth/access_token',
             array(),
             http_build_query($baseParameters)
+        );
+    }
+
+    protected function buildToken($tokenData, $loginData)
+    {
+        $expiresIn    = $this->configData->get('expiresIn', 2592000);
+
+        return $this->token(
+            $this->getUserId($loginData),
+            $tokenData->access_token,
+            $expiresIn
         );
     }
 

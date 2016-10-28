@@ -11,13 +11,13 @@ class Builder
     protected $providers;
 
     protected $providerClassMap = array(
-        'facebook'  => 'PHPixie\Social\Providers\Facebook\Provider',
-        'google'    => 'PHPixie\Social\Providers\Google\Provider',
-        'twitter'   => 'PHPixie\Social\Providers\Twitter\Provider',
-        'vk'        => 'PHPixie\Social\Providers\Vk\Provider',
-        'instagram' => 'PHPixie\Social\Providers\Instagram\Provider',
-        'github'    => 'PHPixie\Social\Providers\Github\Provider',
-        'dropbox'   => 'PHPixie\Social\Providers\Dropbox\Provider',
+        'facebook'  => '\PHPixie\Social\Providers\Facebook\Provider',
+        'google'    => '\PHPixie\Social\Providers\Google\Provider',
+        'twitter'   => '\PHPixie\Social\Providers\Twitter\Provider',
+        'vk'        => '\PHPixie\Social\Providers\Vk\Provider',
+        'instagram' => '\PHPixie\Social\Providers\Instagram\Provider',
+        'github'    => '\PHPixie\Social\Providers\Github\Provider',
+        'dropbox'   => '\PHPixie\Social\Providers\Dropbox\Provider',
     );
 
     public function __construct($configData)

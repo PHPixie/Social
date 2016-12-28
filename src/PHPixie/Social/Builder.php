@@ -18,6 +18,7 @@ class Builder
         'instagram' => '\PHPixie\Social\Providers\Instagram\Provider',
         'github'    => '\PHPixie\Social\Providers\Github\Provider',
         'dropbox'   => '\PHPixie\Social\Providers\Dropbox\Provider',
+        'yandex'   => '\PHPixie\Social\Providers\Yandex\Provider',
     );
 
     public function __construct($configData)

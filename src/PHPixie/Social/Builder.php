@@ -14,7 +14,7 @@ class Builder
         'facebook'  => '\PHPixie\Social\Providers\Facebook\Provider',
         'google'    => '\PHPixie\Social\Providers\Google\Provider',
         'twitter'   => '\PHPixie\Social\Providers\Twitter\Provider',
-        'vk'        => '\PHPixie\Social\Providers\Vk\Provider',
+        'vk'        => '\PHPixie\Social\Providers\VK\Provider',
         'instagram' => '\PHPixie\Social\Providers\Instagram\Provider',
         'github'    => '\PHPixie\Social\Providers\Github\Provider',
         'dropbox'   => '\PHPixie\Social\Providers\Dropbox\Provider',

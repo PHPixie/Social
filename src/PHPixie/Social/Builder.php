@@ -19,6 +19,7 @@ class Builder
         'github'    => '\PHPixie\Social\Providers\Github\Provider',
         'dropbox'   => '\PHPixie\Social\Providers\Dropbox\Provider',
         'yandex'   => '\PHPixie\Social\Providers\Yandex\Provider',
+        'ok'        => '\PHPixie\Social\Providers\Ok\Provider',
     );
 
     public function __construct($configData)

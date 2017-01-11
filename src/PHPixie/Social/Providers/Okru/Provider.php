@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPixie\Social\Providers\OK;
+namespace PHPixie\Social\Providers\Okru;
 
 class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
 {
@@ -80,6 +80,6 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
 
     public function type()
     {
-        return 'ok';
+        return 'okru';
     }
 }

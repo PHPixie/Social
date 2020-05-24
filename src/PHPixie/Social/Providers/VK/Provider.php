@@ -52,13 +52,16 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
 
     public function api($token, $method, $endpoint, $query = array(), $data = null)
     {
-        $query['version'] = $this->configData->get('apiVersion', '5.52');
+        $query['v'] = $this->configData->get('apiVersion', '5.52');
         $accessToken = $token->accessToken();
         return $this->apiCall($accessToken, $method, $endpoint, $query, $data);
     }
 
     public function apiCall($accessToken, $method, $endpoint, $query = array(), $data = null)
     {
+        if (!isset($query['v'])) {
+            $query['v'] = $this->configData->get('apiVersion', '5.52');
+        }
         $response = parent::apiCall($accessToken, $method, $endpoint, $query, $data);
 
         if(isset($response->error)) {
@@ -71,13 +74,13 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
 
     protected function getUserId($loginData)
     {
-        return $loginData->uid;
+        return $loginData->id;
     }
 
     protected function buildToken($tokenData, $loginData)
     {
         return $this->token(
-            $loginData->uid,
+            $loginData->id,
             $tokenData->access_token,
             $tokenData->expires_in
         );

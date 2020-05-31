@@ -74,13 +74,15 @@ class Provider extends \PHPixie\Social\OAuth\OAuth2\Provider
 
     protected function getUserId($loginData)
     {
-        return $loginData->id;
+        $id = isset($loginData->id) ? $loginData->id : $loginData->uid;
+
+        return $id;
     }
 
     protected function buildToken($tokenData, $loginData)
     {
         return $this->token(
-            $loginData->id,
+            $this->getUserId($loginData),
             $tokenData->access_token,
             $tokenData->expires_in
         );
